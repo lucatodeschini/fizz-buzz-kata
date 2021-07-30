@@ -1,32 +1,42 @@
-# Step 2 - Check for multiples of three
+# Step 3 - Refactoring for decoupling responsibilities
 
-The second rule: `For multiples of three print Fizz instead of the number` means we have to check for multiples of three and replace them with Fizz.
+In the second step we've added a couple of lines for understanding if a number is a multiple of three.
+The part of code where we've injected that logic is actually dedicated to provide the list of number, so we need a refactoring for extracting that part of logic in an another testable component.
 
 ## TODO List:
-- [ ] 1 - Refactoring the current test
+- [ ] 1 - Write a test
 - [ ] 2 - Run the test. (The test won't pass)
-- [ ] 3 - Fix with the minimum amount of code
+- [ ] 3 - Move a responsibility to the new component
 - [ ] 4 - Run the test. (The test will pass)
 - [ ] 5 - Commit
 
-### 1 - Refactoring the current test
+### 1 - Write a test
 
-Since we want to have a different output and the first test won't be valid anymore, we have to change the expectation.
+The new responsibility we've added in step 2 is actually providing a number if the input is not multiple of three or else the word "Fizz".
 
-From:
-`"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"`
-The expectation become:
-`"1", "2", "Fizz", "4", "5", "Fizz", "7", "8", "Fizz", "10"`
+Since the logic has two behaviour we're going to write two tests:
+- The first is when the input is multiple of three: `returnFizzIfEvaluatingThree`
+    - Asserting `assertEquals("Fizz", evaluateNumber(3))`
+- The second test is for not multiples of three: `returnFourIfEvaluatingFour`
+    - Asserting `assertEquals("4", evaluateNumber(4))`
 
-### 3 - Fix with the minimum amount of code
+In order to avoid building errors we create a dummy function: `private String evaluateNumber(int number){ return "" }"`
 
-Adding the following code inside the `for` loop actually makes the function meeting out expectation. 
+### 3 - Move a responsibility to the new component
+
+The new component we've created is the function `evaluateNumber`, 
+in order to pass the test we have to move the logic of choosing which string return inside the new function.
+
+The function will be:
 ```
-if(i % 3 == 0){
-    lines.add("Fizz");
-}else{
-    lines.add(Integer.toString(i));
+private String evaluateNumber(int number){
+    if(number % 3 == 0){
+        return "Fizz";
+    }else{
+        return Integer.toString(number);
+    }
 }
 ```
 
-Note: another responsibility is added, the check of the multiples of three, we need probably to decouple it in the next iterations.
+Note: `evaluateNumber` function can be considered a collaborator because we can eventually refactor it without changing the `writeLines` that 
+has the responsibility of creating the list of lines.
