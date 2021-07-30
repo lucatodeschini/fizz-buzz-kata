@@ -12,7 +12,7 @@ public class LineWriterTest {
 
     @Test
     void write10Lines(){
-        var expectedResult = asList("1", "2", "Fizz", "4", "5", "Fizz", "7", "8", "Fizz", "10");
+        var expectedResult = asList("1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz");
 
         var result = writeLines(10);
 
@@ -22,6 +22,11 @@ public class LineWriterTest {
     @Test
     void returnFizzIfEvaluatingThree(){
         assertEquals("Fizz", evaluateNumber(3));
+    }
+
+    @Test
+    void returnBuzzIfEvaluatingFive(){
+        assertEquals("Buzz", evaluateNumber(5));
     }
 
     @Test
@@ -40,7 +45,9 @@ public class LineWriterTest {
     private String evaluateNumber(int number){
         if(number % 3 == 0){
             return "Fizz";
-        }else{
+        }else if(number % 5 == 0){
+            return "Buzz";
+        } else{
             return Integer.toString(number);
         }
     }

@@ -1,42 +1,34 @@
-# Step 3 - Refactoring for decoupling responsibilities
+# Step 4 - Multiples of five
 
-In the second step we've added a couple of lines for understanding if a number is a multiple of three.
-The part of code where we've injected that logic is actually dedicated to provide the list of number, so we need a refactoring for extracting that part of logic in an another testable component.
+In this step we're going to evaluate if a number is multiple of five
 
 ## TODO List:
-- [ ] 1 - Write a test
+- [ ] 1 - Write a new test and refactor the current
 - [ ] 2 - Run the test. (The test won't pass)
-- [ ] 3 - Move a responsibility to the new component
+- [ ] 3 - Fix the test with the minimum amount of code
 - [ ] 4 - Run the test. (The test will pass)
 - [ ] 5 - Commit
 
 ### 1 - Write a test
 
-The new responsibility we've added in step 2 is actually providing a number if the input is not multiple of three or else the word "Fizz".
+In the previous step we've delegate the responsibility of evaluation to the `evaluateNumber` function.
 
-Since the logic has two behaviour we're going to write two tests:
-- The first is when the input is multiple of three: `returnFizzIfEvaluatingThree`
-    - Asserting `assertEquals("Fizz", evaluateNumber(3))`
-- The second test is for not multiples of three: `returnFourIfEvaluatingFour`
-    - Asserting `assertEquals("4", evaluateNumber(4))`
+We need to create another test `returnBuzzIfEvaluatingFive` because we want to adapt the evaluation function for returning `Buzz` when a multiple of `five` is provided.
 
-In order to avoid building errors we create a dummy function: `private String evaluateNumber(int number){ return "" }"`
+We also need to modify the `write10Lines`, our expectation is now:
+`"1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz"`
 
-### 3 - Move a responsibility to the new component
+### 3 - Fix the test with the minimum amount of code
 
-The new component we've created is the function `evaluateNumber`, 
-in order to pass the test we have to move the logic of choosing which string return inside the new function.
-
-The function will be:
+Fix the function to evaluate multiples of five:
 ```
 private String evaluateNumber(int number){
     if(number % 3 == 0){
         return "Fizz";
-    }else{
+    }else if(number % 5 == 0){
+        return "Buzz";
+    } else{
         return Integer.toString(number);
     }
 }
 ```
-
-Note: `evaluateNumber` function can be considered a collaborator because we can eventually refactor it without changing the `writeLines` that 
-has the responsibility of creating the list of lines.
