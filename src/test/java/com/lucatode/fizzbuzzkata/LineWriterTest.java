@@ -12,7 +12,7 @@ public class LineWriterTest {
 
     @Test
     void write10Lines(){
-        var expectedResult = asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
+        var expectedResult = asList("1", "2", "Fizz", "4", "5", "Fizz", "7", "8", "Fizz", "10");
 
         var result = writeLines(10);
 
@@ -22,7 +22,11 @@ public class LineWriterTest {
     private List<String> writeLines(int n) {
         List<String> lines = new ArrayList<>();
         for (int i = 1; i <= n; i++ ) {
-            lines.add(Integer.toString(i));
+            if(i % 3 == 0){
+                lines.add("Fizz");
+            }else{
+                lines.add(Integer.toString(i));
+            }
         }
         return lines;
     }
