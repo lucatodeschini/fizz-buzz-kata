@@ -15,4 +15,14 @@ This repo has multiple branches for showing the progress of the TDD technique:
 - step_2_xxxxxx
 - etc.
 
-Each branch contains a description of the current branch exposing which decisions are taken.
+Each branch contains a description `STEP_DESCRIPTION.md` of the current branch exposing which decisions are taken.
+
+## TDD way to go
+
+In order to complete this exercise we're going to apply this process:
+1. Check for refactoring (if available).
+2. Choose a rule (or a part of it).
+3. Write a test with a clear expectation.
+4. Solve the expectation with the less effort you need.
+5. Commit
+6. Restart from point 1
