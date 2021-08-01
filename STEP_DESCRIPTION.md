@@ -1,43 +1,8 @@
-# Step 4 - Multiples of five
+# Step 5 - FizzBuzz
 
-In this step we're going to evaluate if a number is multiple of five
+Third rule of the game: `For numbers which are multiples of both three and five print FizzBuzz instead of the number`.
 
 ## TODO List:
-- [ ] 1 - Write a new test and refactor the current
-- [ ] 2 - Run the test. (The test won't pass)
-- [ ] 3 - Fix the test with the minimum amount of code
-- [ ] 4 - Run the test. (The test will pass)
-- [ ] 5 - Commit
-
-### 1 - Write a test
-
-In the previous step we've delegate the responsibility of evaluation to the `evaluateNumber` function.
-
-We need to create another test `returnBuzzIfEvaluatingFive` because we want to adapt the evaluation function for returning `Buzz` when a multiple of `five` is provided.
-
-We also need to modify the `write10Lines`, our expectation is now:
-`"1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz"`
-
-### 3 - Fix the test with the minimum amount of code
-
-Fix the function to evaluate multiples of five:
-```
-private String evaluateNumber(int number){
-    if(number % 3 == 0){
-        return "Fizz";
-    }else if(number % 5 == 0){
-        return "Buzz";
-    } else{
-        return Integer.toString(number);
-    }
-}
-```
-
-## What's next?
-
-Third rule of the game: `For numbers which are multiples of both three and five print FizzBuzz instead of the number`
-
-For doing this we have to:
 - [ ] Refactor the `write10Lines`, no multiples of both three and five is in the first 10 lines.
 - [ ] Be sure the new test `write15Lines` is passing.
 - [ ] Create a new test to cover the rule "multiples of both three and five".
@@ -45,3 +10,49 @@ For doing this we have to:
 - [ ] Add the minimum logic for making the test pass
 - [ ] Run the tests, they should be green
 - [ ] Commit
+
+### 1 - Refactor the `write10Lines` in `write15Lines`, no multiples of both three and five is in the first 10 lines.
+
+Extending the number of lines to `15`, the current implementation should return: `"1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "Fizz"`
+
+Before adding FizzBuzz:
+- expected result: `"1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "Fizz"`
+- `writeLines(15)` as SUT
+- Make sure the test is passing 
+
+Note: we're just extending the first test with the current logic, we should be sure the logic is applicable to the first 15 numbers.
+
+### 3 - Create a new test to cover the rule "multiples of both three and five"
+
+Add a new test to cover the expected result:
+```
+@Test
+void returnFizzBuzzIfEvaluatingFiveteen(){
+    assertEquals("FizzBuzz", evaluateNumber(15));
+}
+```
+
+Modify the expected result of `write15Lines` to:
+- `"1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz"`
+
+Run the tests, both of them should be red.
+
+### 4 - Add the minimum logic for making the test pass
+
+Adding the new condition in the `if`:
+```
+private String evaluateNumber(int number){
+        if((number % 3 == 0) && (number % 5 == 0)){
+            return "FizzBuzz";
+        }else if(number % 3 == 0){
+            return "Fizz";
+        }else if(number % 5 == 0){
+            return "Buzz";
+        } else{
+            return Integer.toString(number);
+        }
+    }
+```
+
+
+

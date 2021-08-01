@@ -11,10 +11,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class LineWriterTest {
 
     @Test
-    void write10Lines(){
-        var expectedResult = asList("1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz");
+    void write15Lines(){
+        var expectedResult = asList("1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz");
 
-        var result = writeLines(10);
+        var result = writeLines(15);
 
         assertEquals(expectedResult, result);
     }
@@ -27,6 +27,11 @@ public class LineWriterTest {
     @Test
     void returnBuzzIfEvaluatingFive(){
         assertEquals("Buzz", evaluateNumber(5));
+    }
+
+    @Test
+    void returnFizzBuzzIfEvaluatingFiveteen(){
+        assertEquals("FizzBuzz", evaluateNumber(15));
     }
 
     @Test
@@ -43,7 +48,9 @@ public class LineWriterTest {
     }
 
     private String evaluateNumber(int number){
-        if(number % 3 == 0){
+        if((number % 3 == 0) && (number % 5 == 0)){
+            return "FizzBuzz";
+        }else if(number % 3 == 0){
             return "Fizz";
         }else if(number % 5 == 0){
             return "Buzz";
