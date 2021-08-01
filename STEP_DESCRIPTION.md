@@ -32,3 +32,16 @@ private String evaluateNumber(int number){
     }
 }
 ```
+
+## What's next?
+
+Third rule of the game: `For numbers which are multiples of both three and five print FizzBuzz instead of the number`
+
+For doing this we have to:
+- [ ] Refactor the `write10Lines`, no multiples of both three and five is in the first 10 lines.
+- [ ] Be sure the new test `write15Lines` is passing.
+- [ ] Create a new test to cover the rule "multiples of both three and five".
+- [ ] Run the test, be sure they're not passing.
+- [ ] Add the minimum logic for making the test pass
+- [ ] Run the tests, they should be green
+- [ ] Commit
