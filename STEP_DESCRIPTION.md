@@ -54,5 +54,17 @@ private String evaluateNumber(int number){
     }
 ```
 
+## What's next?
+
+The logic we have is still in the tests.
+
+We have to:
+- [ ] Refactor the tests for instantiate objects and calling methods instead of calling functions.
+- [ ] Make sure the tests are not compiling
+- [ ] Make sure it compiles, but the tests are still failing
+- [ ] Move the logic in classes
+- [ ] The tests should pass
+- [ ] Commit
+
 
 
