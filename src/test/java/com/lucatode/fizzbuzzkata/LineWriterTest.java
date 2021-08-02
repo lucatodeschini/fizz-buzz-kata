@@ -41,14 +41,6 @@ public class LineWriterTest {
         assertEquals("4", evaluateNumber(4));
     }
 
-    private List<String> writeLines(int n) {
-        List<String> lines = new ArrayList<>();
-        for (int i = 1; i <= n; i++ ) {
-            lines.add(evaluateNumber(i));
-        }
-        return lines;
-    }
-
     private String evaluateNumber(int number){
         if((number % 3 == 0) && (number % 5 == 0)){
             return "FizzBuzz";
