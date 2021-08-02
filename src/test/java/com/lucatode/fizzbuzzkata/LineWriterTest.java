@@ -2,15 +2,13 @@ package com.lucatode.fizzbuzzkata;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LineWriterTest {
 
-    LineWriter lineWriter = new LineWriter();
+    NumberEvaluator numberEvaluator = new NumberEvaluator();
+    LineWriter lineWriter = new LineWriter(numberEvaluator);
 
     @Test
     void write15Lines(){
@@ -23,33 +21,21 @@ public class LineWriterTest {
 
     @Test
     void returnFizzIfEvaluatingThree(){
-        assertEquals("Fizz", evaluateNumber(3));
+        assertEquals("Fizz", numberEvaluator.evaluateNumber(3));
     }
 
     @Test
     void returnBuzzIfEvaluatingFive(){
-        assertEquals("Buzz", evaluateNumber(5));
+        assertEquals("Buzz", numberEvaluator.evaluateNumber(5));
     }
 
     @Test
     void returnFizzBuzzIfEvaluatingFiveteen(){
-        assertEquals("FizzBuzz", evaluateNumber(15));
+        assertEquals("FizzBuzz", numberEvaluator.evaluateNumber(15));
     }
 
     @Test
     void returnFourIfEvaluatingFour(){
-        assertEquals("4", evaluateNumber(4));
-    }
-
-    private String evaluateNumber(int number){
-        if((number % 3 == 0) && (number % 5 == 0)){
-            return "FizzBuzz";
-        }else if(number % 3 == 0){
-            return "Fizz";
-        }else if(number % 5 == 0){
-            return "Buzz";
-        } else{
-            return Integer.toString(number);
-        }
+        assertEquals("4", numberEvaluator.evaluateNumber(4));
     }
 }

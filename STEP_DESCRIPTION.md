@@ -82,3 +82,81 @@ We still have the same `evaluateNumber` function written in two places, clear ex
 We're going to remove this duplication in a new iteration of the same todo list `Iteration B`.
 
 ### Iteration B - Refactor the tests for instantiate objects and calling methods instead of calling functions.
+
+As we did before, we have to create a new instance of the class `NumberEvaluator`:
+
+```
+public class LineWriterTest {
+
+    LineWriter lineWriter = new LineWriter();
+    NumberEvaluator numberEvaluator = new NumberEvaluator();
+    ...
+```
+
+Refactor all the tests containing the `evaluateNumber` function, like this:
+```
+@Test
+void returnFizzIfEvaluatingThree(){
+    assertEquals("Fizz", numberEvaluator.evaluateNumber(3));
+}
+```
+
+Make sure the test compiles, create the new class with a dummy method:
+```
+public class NumberEvaluator {
+    public String evaluateNumber(int number) {
+        return null;
+    }
+}
+```
+
+If you run all the refactored tests are red, like:
+```
+Expected :FizzBuzz
+Actual   :null
+```
+
+We're going to add the minimum amount of logic to make them pass, copy/pasting the existing logic:
+```
+public class NumberEvaluator {
+    public String evaluateNumber(int number) {
+        if((number % 3 == 0) && (number % 5 == 0)){
+            return "FizzBuzz";
+        }else if(number % 3 == 0){
+            return "Fizz";
+        }else if(number % 5 == 0){
+            return "Buzz";
+        } else{
+            return Integer.toString(number);
+        }
+    }
+}
+```
+
+Running the tests, all of them should be green.
+
+Now we can remove the previous `evaluateNumber` function.
+
+The logic is for evaluating a number is still duplicated in `NumberEvaluator` class and `LineWriter` class: we need to inject the behaviour of inside `LineWriter`.
+
+## Iteration C - Inject the duplicated behaviour
+
+```
+public class LineWriter {
+    private NumberEvaluator numberEvaluator;
+
+    public LineWriter(NumberEvaluator numberEvaluator) {
+        this.numberEvaluator = numberEvaluator;
+    }
+
+    public List<String> writeLines(int n) {
+        List<String> lines = new ArrayList<>();
+        for (int i = 1; i <= n; i++ ) {
+            lines.add(numberEvaluator.evaluateNumber(i));
+        }
+        return lines;
+    }
+}
+```
+
+Make sure after this change the tests are still green.
