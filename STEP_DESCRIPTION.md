@@ -74,6 +74,7 @@ public class LineWriter {
 ```
 
 At this point the test `write15Lines` should pass and we're ready for commit.
+Now you can remove the `writeLines` function in the tests.
 
 Note: make sure all tests are passing.
 
