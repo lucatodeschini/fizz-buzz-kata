@@ -10,11 +10,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LineWriterTest {
 
+    LineWriter lineWriter = new LineWriter();
+
     @Test
     void write15Lines(){
         var expectedResult = asList("1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "FizzBuzz");
 
-        var result = writeLines(15);
+        var result = lineWriter.writeLines(15);
 
         assertEquals(expectedResult, result);
     }
