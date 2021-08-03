@@ -6,6 +6,7 @@ We need to create classes and use them in our application.
 Given that we're using two functions we need to iterate twice on the following steps:
 - Iteration A for `writeLines`
 - Iteration B for `evaluateNumbers`
+- Iteration C injecting `NumberEvaluator` behaviour in `LineWriter` class
 
 ## TODO List:
 1. - [ ] Refactor the tests for instantiate objects and calling methods instead of calling functions.
@@ -139,7 +140,7 @@ Now we can remove the previous `evaluateNumber` function.
 
 The logic is for evaluating a number is still duplicated in `NumberEvaluator` class and `LineWriter` class: we need to inject the behaviour of inside `LineWriter`.
 
-## Iteration C - Inject the duplicated behaviour
+### Iteration C - Inject the duplicated behaviour
 
 ```
 public class LineWriter {
@@ -160,3 +161,5 @@ public class LineWriter {
 ```
 
 Make sure after this change the tests are still green.
+
+## What's next?
