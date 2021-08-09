@@ -18,24 +18,4 @@ public class LineWriterTest {
 
         assertEquals(expectedResult, result);
     }
-
-    @Test
-    void returnFizzIfEvaluatingThree(){
-        assertEquals("Fizz", numberEvaluator.evaluateNumber(3));
-    }
-
-    @Test
-    void returnBuzzIfEvaluatingFive(){
-        assertEquals("Buzz", numberEvaluator.evaluateNumber(5));
-    }
-
-    @Test
-    void returnFizzBuzzIfEvaluatingFiveteen(){
-        assertEquals("FizzBuzz", numberEvaluator.evaluateNumber(15));
-    }
-
-    @Test
-    void returnFourIfEvaluatingFour(){
-        assertEquals("4", numberEvaluator.evaluateNumber(4));
-    }
 }
