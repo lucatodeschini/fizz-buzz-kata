@@ -163,3 +163,7 @@ public class LineWriter {
 Make sure after this change the tests are still green.
 
 ## What's next?
+
+1. - [ ] Refactor: split test class in two classes, one for NumberEvaluator, one for LineWriter
+2. - [ ] The tests in both classes should pass
+3. - [ ] Commit
