@@ -1,7 +1,7 @@
 # Step 3 - Refactoring for decoupling responsibilities
 
-In the second step we've added a couple of lines for understanding if a number is a multiple of three.
-The part of code where we've injected that logic is actually dedicated to provide the list of number, so we need a refactoring for extracting that part of logic in an another testable component.
+In the second step we've added a couple of lines for checking if a number is a multiple of three.
+The part of code where we've injected that logic is actually dedicated to provide the list of number, so we need a refactoring for extracting that part of logic in another testable component.
 
 ## TODO List:
 - [ ] 1 - Write a test
