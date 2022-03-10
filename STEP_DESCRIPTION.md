@@ -2,7 +2,7 @@
 
 In this step we want to be sure that our application is actually able to write 100 lines in the console.
 
-For simplicity we're going to assume that is fine write the lines on a list, because interacting with the console would be a bit more complex.
+For simplicity, we're going to assume that is fine write the lines in a list, because interacting with the console would be a bit more complex.
 So we can postpone using the real console for now.
 
 ## TODO List:
